@@ -1,0 +1,808 @@
+:root {
+  --color-bg-main: #0e0e12;
+  --color-bg-card: #151821;
+  --color-border: #2a2f3a;
+  --color-text-main: #e7e7e7;
+  --color-text-secondary: #aeb3be;
+  --color-accent: #4dd2ff;
+  --color-white: #ffffff;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  font-family: sans-serif;
+  font-size: 16px;
+  color: var(--color-text-main);
+  background: var(--color-bg-main);
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: var(--color-bg-main);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header-container {
+  max-width: 1450px;
+  width: 100%;
+  padding: 15px 15px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__logo {
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.burger-checkbox {
+  position: absolute;
+  visibility: hidden;
+}
+.burger {
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  display: block;
+  border: none;
+  background: transparent;
+  width: 40px;
+  height: 26px;
+}
+.burger::before,
+.burger::after {
+  content: "";
+  left: 0;
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 4px;
+  border-radius: 10px;
+  background: #9cb7e9;
+}
+.burger::before {
+  top: 0;
+  box-shadow: 0 11px 0 #9cb7e9;
+  transition:
+    box-shadow 0.3s 0.15s,
+    top 0.3s 0.15s,
+    transform 0.3s;
+}
+.burger::after {
+  bottom: 0;
+  transition:
+    bottom 0.3s 0.15s,
+    transform 0.3s;
+}
+.burger-checkbox:checked + .burger::before {
+  top: 11px;
+  transform: rotate(45deg);
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0);
+  transition:
+    box-shadow 0.15s,
+    top 0.3s,
+    transform 0.3s 0.15s;
+}
+.burger-checkbox:checked + .burger::after {
+  bottom: 11px;
+  transform: rotate(-45deg);
+  transition:
+    bottom 0.3s,
+    transform 0.3s 0.15s;
+}
+.menu-list {
+  top: 71px;
+  left: 0;
+  position: absolute;
+  display: grid;
+  gap: 12px;
+  padding: 42px 0;
+  margin: 0;
+  background: #9cb7e9;
+  list-style-type: none;
+  transform: translateX(-100%);
+  transition: 0.3s;
+  width: 100%;
+  z-index: 1;
+}
+.menu-item {
+  display: block;
+  padding: 8px;
+  color: var(--color-white);
+  font-size: 18px;
+  text-align: center;
+  text-decoration: none;
+  transition: color 0.3s ease-in;
+}
+.menu-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+.burger-checkbox:checked ~ .menu-list {
+  transform: translateX(0);
+}
+
+.band {
+  margin-top: 71px;
+  padding: 30px 0px 30px;
+  scroll-margin-top: 71px;
+  background: url("../img/background-image.webp") center center / cover
+    no-repeat;
+}
+
+.container {
+  max-width: 1200px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+.band__name {
+  padding-bottom: 30px;
+  font-size: 28px;
+  text-align: center;
+}
+.band__review {
+  font-size: 20px;
+  padding-bottom: 20px;
+}
+
+.band__about {
+  line-height: 160%;
+  padding-bottom: 20px;
+  text-align: justify;
+}
+
+.text-color {
+  color: var(--color-accent);
+}
+
+.band__concert {
+  padding-bottom: 20px;
+  text-align: justify;
+}
+
+.button {
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s ease-out;
+}
+
+button:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+.button--yellow {
+  color: #29271b;
+  background-color: #fddb11;
+  border: 2px solid #e6c201;
+  height: 45px;
+  width: 200px;
+  font-size: 18px;
+  margin: 0 auto;
+  text-transform: uppercase;
+  box-shadow: 6px 6px 10px rgba(245, 220, 1, 0.5);
+}
+
+.button--yellow:hover {
+  background-color: #cfbb06;
+  border-color: #cfbb06;
+  color: rgb(112, 106, 106);
+}
+
+.button--yellow:focus {
+  background-color: #927c02;
+  border-color: #1b1806;
+  color: #1b1806;
+}
+
+.button--yellow:active {
+  background-color: #e9e8e0;
+  border-color: #1b1806;
+  color: #9c8500;
+}
+
+.concert {
+  background-color: var(--color-bg-main);
+  padding: 30px 0px;
+  scroll-margin-top: 71px;
+}
+
+.concert-box {
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.concert-new {
+  font-size: 18px;
+  text-align: center;
+  padding: 15px 0;
+  background-color: #1b1e29;
+  font-weight: 600;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.concert-title {
+  display: none;
+}
+
+.concert_info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  color: var(--color-white);
+  background-color: var(--color-bg-card);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.concert_info:last-child {
+  border-bottom: none;
+}
+
+.concert-info__city,
+.concert-info__seats,
+.concert-info__day {
+  padding: 0;
+  text-align: center;
+}
+
+.button--red {
+  background-color: #f82c56;
+  color: var(--color-white);
+  border: none;
+  width: 147px;
+  height: 37px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.button--red:hover {
+  background-color: #ae092b;
+}
+
+.button--red:focus {
+  background-color: #531111;
+}
+
+.button--red:active {
+  background-color: #e9caca;
+  color: #ae092b;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.team {
+  padding-bottom: 30px;
+  scroll-margin-top: 71px;
+}
+
+.team-members {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.team-members__item {
+  width: 100%;
+  max-width: 300px;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background-color: var(--color-bg-card);
+  overflow: hidden;
+}
+
+.team-members__img {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.team-members__name {
+  height: 46px;
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+  font-weight: 500;
+}
+
+.history {
+  background-image: linear-gradient(to bottom right, #101c21, #1e1116);
+  padding: 30px 0px 30px;
+}
+
+.history-title {
+  padding-bottom: 26px;
+}
+
+.history-img {
+  display: block;
+  border-radius: 8px;
+  margin: 0 auto 20px;
+}
+
+.history__text {
+  line-height: 150%;
+  text-align: justify;
+}
+
+.history__text:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.contact {
+  background-image: linear-gradient(to bottom right, #261118, #14232a);
+  padding: 30px 0px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.contact__text {
+  text-align: center;
+  font-size: 18px;
+  color: var(--color-text-secondary);
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.contact-box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form {
+  width: 100%;
+}
+
+.contact-form__box {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.contact-form__box-text {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.contact-form__box-label {
+  display: block;
+  font-size: 14px;
+  padding-bottom: 15px;
+  color: var(--color-text-secondary);
+  font-weight: 600;
+}
+
+.contact-form__box-input {
+  width: 100%;
+  height: 44px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background-color: var(--color-bg-card);
+  color: var(--color-white);
+  font-size: 18px;
+}
+
+.contact-form__box-email {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.contact-form__box-textarea {
+  width: 100%;
+  height: 83px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background-color: var(--color-bg-card);
+  color: var(--color-white);
+  padding: 10px 15px;
+  font-size: 18px;
+  margin-bottom: 17px;
+}
+
+.contact__button {
+  height: 40px;
+  width: 158px;
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+.contact-map {
+  width: 100%;
+  max-width: 768px;
+  max-height: 396px;
+  height: 100%;
+  background-color: var(--color-bg-card);
+  padding: 23px 20px 27px 20px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+}
+
+.contact-map iframe {
+  width: 100%;
+  height: 300px;
+}
+
+.contact-map__title {
+  font-size: 20px;
+  font-weight: 600;
+  padding-bottom: 20px;
+}
+
+.footer {
+  background-color: var(--color-bg-card);
+}
+
+.footer a {
+  transition: color 0.3s ease;
+}
+
+.footer a:focus {
+  outline: 2px solid var(--color-white);
+  outline-offset: 4px;
+}
+
+.footer-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-box__info-email:hover,
+.footer-box__info-tel:hover,
+.footer-box__social a:hover {
+  color: var(--color-white);
+}
+
+.footer-box__info {
+  padding: 30px 0px;
+}
+
+.footer-box__info-register {
+  display: block;
+  color: var(--color-text-secondary);
+  padding-bottom: 30px;
+  font-size: 16px;
+}
+
+.footer-box__info-email,
+.footer-box__info-tel {
+  color: var(--color-text-main);
+}
+
+.footer-box__social {
+  color: var(--color-text-secondary);
+  margin-bottom: 30px;
+}
+
+@media (min-width: 576px) {
+  .concert-info__city,
+  .concert-info__seats,
+  .concert-info__day {
+    text-align: left;
+  }
+
+  .concert-title {
+    background-color: #1b1e29;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+  }
+
+  .concert-title,
+  .concert_info {
+    width: 100%;
+    display: grid;
+    gap: 15px;
+    grid-template-columns: 1fr 1fr;
+    height: auto;
+    padding: 14px 15px;
+  }
+
+  .contact-form__box {
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 768px) {
+  .header-container {
+    padding: 17px 15px;
+  }
+
+  .burger {
+    display: none;
+  }
+
+  .burger-checkbox {
+    display: none;
+  }
+  .menu-list {
+    position: static;
+    transform: none;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    background: transparent;
+    padding: 0;
+    width: auto;
+  }
+
+  .menu-item {
+    color: var(--color-text-main);
+    font-size: 16px;
+  }
+
+  .menu-item:hover {
+    background: transparent;
+    color: var(--color-accent);
+  }
+
+  .band {
+    scroll-margin-top: 75px;
+    padding: 50px 0px;
+    margin-top: 75px;
+  }
+
+  .band__name {
+    font-size: 36px;
+    text-align: left;
+  }
+
+  .band__review {
+    font-size: 22px;
+  }
+
+  .button--yellow {
+    margin: 0;
+  }
+
+  .concert {
+    padding: 50px 0px;
+    scroll-margin-top: 75px;
+  }
+
+  .concert-box {
+    margin-bottom: 50px;
+  }
+
+  .concert-new {
+    text-align: left;
+    padding-left: 20px;
+  }
+
+  .concert-title,
+  .concert_info {
+    display: grid;
+    grid-template-columns: 1.22fr 0.76fr 1.03fr 1.08fr;
+  }
+
+  .span2 {
+    grid-column: span 2;
+  }
+
+  .team {
+    padding-bottom: 50px;
+    scroll-margin-top: 75px;
+  }
+
+  .history {
+    padding: 50px 0px 50px;
+  }
+
+  .history-title {
+    text-align: left;
+  }
+
+  .history-img {
+    width: auto;
+    border-radius: 0px;
+    float: right;
+    margin-left: 10px;
+  }
+
+  .contact {
+    padding: 50px 0px;
+  }
+
+  .contact .container {
+    margin: 0 auto;
+    max-width: 768px;
+  }
+
+  .footer-box {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .footer-box__social {
+    padding-top: 30px;
+    margin-bottom: 0px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .band {
+    padding: 110px 0px;
+  }
+
+  .band__name {
+    font-size: 48px;
+    font-weight: 600;
+    padding-bottom: 33px;
+  }
+  .band__review {
+    padding-bottom: 36px;
+  }
+
+  .band__about {
+    font-weight: 600;
+  }
+
+  .band__concert {
+    font-weight: 600;
+    padding-bottom: 43px;
+  }
+
+  .button--yellow {
+    height: 53px;
+    width: 225px;
+    font-weight: 700;
+  }
+
+  .concert {
+    padding-top: 64px;
+    padding-bottom: 82px;
+  }
+
+  .concert-new {
+    height: 67px;
+    padding: 20px 0 0 18px;
+    font-size: 24px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .team {
+    padding-top: 82px;
+    padding-bottom: 42px;
+  }
+
+  .team-members {
+    justify-content: space-around;
+  }
+
+  .history {
+    padding: 60px 0px 50px;
+  }
+
+  .history__text {
+    line-height: 170%;
+  }
+
+  .history__text:not(:last-child) {
+    margin-bottom: 15px;
+  }
+
+  .contact {
+    padding-top: 60px;
+    padding-bottom: 70px;
+  }
+
+  .contact .container {
+    margin: 0 auto;
+    max-width: 1200px;
+  }
+
+  .contact__text {
+    padding-top: 12px;
+    padding-bottom: 30px;
+  }
+
+  .contact-box {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .contact-form {
+    max-width: 565px;
+  }
+
+  .contact-form__box {
+    width: 100%;
+    max-width: 565px;
+    padding-bottom: 22px;
+  }
+
+  .contact-form__box-text {
+    max-width: 275px;
+    width: 100%;
+    margin-bottom: 0px;
+  }
+  .contact-form__box-label {
+    padding-bottom: 8px;
+  }
+  .contact-form__box-email {
+    max-width: 275px;
+    width: 100%;
+    margin-bottom: 0px;
+  }
+
+  .contact-form__box-textarea {
+    max-width: 565px;
+    margin-bottom: 10px;
+  }
+
+  .contact__button {
+    height: 48px;
+  }
+
+  .contact-map {
+    max-width: 565px;
+  }
+
+  .footer-box__info,
+  .footer-box__social {
+    padding: 40px 0px;
+  }
+  .footer-box__info-register {
+    padding-bottom: 40px;
+  }
+}
+@media (min-width: 1200px) {
+  .band {
+    padding: 125px 0px 122px;
+  }
+
+  .band__name {
+    font-size: 56px;
+    padding-bottom: 21px;
+  }
+  .band__review {
+    padding-bottom: 32px;
+  }
+
+  .band__about {
+    padding-bottom: 17px;
+  }
+
+  .band__concert {
+    padding-bottom: 41px;
+  }
+
+  .title {
+    font-weight: 800;
+  }
+
+  .history {
+    padding: 60px 0px 88px;
+  }
+}
