@@ -56,9 +56,7 @@
           залом, драйв і емоції. Приєднуйся до нас на найближчих виступах і
           відчуй цей саунд наживо!
         </p>
-        <button class="button button--yellow" type="button">
-          Заказати квиток
-        </button>
+        <a href="#concert" class="button button--yellow"> Заказати квиток </a>
       </div>
     </main>
     <section class="concert" id="concert">
@@ -74,33 +72,41 @@
             <div class="concert-info__city">Київ - Docker-G Pub</div>
             <div class="concert-info__seats">250</div>
             <div class="concert-info__day">25.10.2025, 19:00</div>
-            <button class="button button--red" type="button">
+            <a href="#popup1" class="button button--red button-js">
               Замовити квиток
-            </button>
+            </a>
           </div>
           <div class="concert_info">
             <div class="concert-info__city">Львів - !FESTrepublic</div>
             <div class="concert-info__seats">400</div>
             <div class="concert-info__day">01.11.2025, 20:00</div>
-            <button class="button button--red" type="button">
+            <a href="#popup1" class="button button--red button-js">
               Замовити квиток
-            </button>
+            </a>
           </div>
           <div class="concert_info">
             <div class="concert-info__city">Одеса - Зелен театр</div>
             <div class="concert-info__seats">700</div>
             <div class="concert-info__day">09.11.2025, 19:30</div>
-            <button class="button button--red" type="button">
+            <a href="#popup1" class="button button--red button-js">
               Замовити квиток
-            </button>
+            </a>
           </div>
           <div class="concert_info">
             <div class="concert-info__city">Харків - ArtZavod</div>
             <div class="concert-info__seats">500</div>
             <div class="concert-info__day">16.11.2025, 19:00</div>
-            <button class="button button--red" type="button">
+            <a href="#popup1" class="button button--red button-js">
               Замовити квиток
-            </button>
+            </a>
+          </div>
+        </div>
+        <div id="popup1" class="overlay">
+          <div class="popup">
+            <h2>Замовлення</h2>
+            <a class="close" href="#!">&times;</a>
+            <div class="content"></div>
+            <a href="#!" class="button button--red"> Оформити </a>
           </div>
         </div>
         <h2 class="team title" id="team">Учасники гурту</h2>
@@ -162,7 +168,12 @@
         </p>
         <div class="contact-box">
           <div class="contact-form">
-            <form action="#" method="post">
+            <form
+              onsubmit="
+                alert('Форма відправлена');
+                return false;
+              "
+            >
               <div class="contact-form__box">
                 <div class="contact-form__box-text">
                   <label class="contact-form__box-label" for="username"
